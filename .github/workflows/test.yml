@@ -12,6 +12,10 @@ jobs:
         image: nginx
         ports:
         - 8080:80
+      mysq;:
+        image: mysql
+        ports:
+        - 3306
     steps:
     - uses: actions/checkout@v1
     - name: Run a one-line script
@@ -38,5 +42,9 @@ jobs:
       uses: docker://alpine:latest
       with:
         args: echo test
+    - name: mysql port
+      run: echo ${PORT}
+      env:
+        PORT: ${{ job.services.mysql.ports['3306'] }}
     - name: curl
       run: curl http://localhost:8080/
