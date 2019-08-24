@@ -8,4 +8,5 @@ jobs:
     steps:
     - name: echo
       uses: docker://mcr.microsoft.com/windows/servercore
-      run: echo windows
+      with:
+        args: echo windows
