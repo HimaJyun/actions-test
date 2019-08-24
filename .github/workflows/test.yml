@@ -39,4 +39,4 @@ jobs:
       with:
         args: echo test
     - name: curl
-      run: curl http://localhost/
+      run: curl http://localhost:8080/
