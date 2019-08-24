@@ -29,7 +29,6 @@ jobs:
       run: |
         pwd
         date > ${HOME}/date
-        date > /github/date
     - name: fs test2
       run: cat ${HOME}/date
     - name: net test
