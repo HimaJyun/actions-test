@@ -15,3 +15,12 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+    - name: fs test
+      run: |
+        pwd
+        date > ./file
+    - name: fs test2
+      run: cat ./file
+    - name: net test
+      run: |
+        curl -LO "https://github.com/gohugoio/hugo/releases/download/v0.57.2/hugo_extended_0.57.2_Linux-64bit.tar.gz"
