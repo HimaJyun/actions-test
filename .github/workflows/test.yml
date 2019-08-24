@@ -17,7 +17,14 @@ jobs:
         echo test, and deploy your project.
     - name: list file
       run: |
-        find / -maxdepth 2
+        ls -lah /
+    - name: os
+      run: |
+        cat /proc/cpuinfo
+        cat /proc/meminfo
+        cat /proc/partitions
+        cat /proc/loadavg
+        cat /proc/stat
     - name: fs test
       run: |
         pwd
