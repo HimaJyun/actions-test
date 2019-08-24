@@ -7,6 +7,6 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: echo
-      uses: docker://mcr.microsoft.com/windows/servercore:ltsc2019
+      uses: docker://mcr.microsoft.com/powershell
       with:
         args: echo windows
