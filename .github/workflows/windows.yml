@@ -1,0 +1,12 @@
+name: Windows
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: echo
+      uses: docker://mcr.microsoft.com/windows/servercore:ltsc2019
+      with:
+        args: echo windows
