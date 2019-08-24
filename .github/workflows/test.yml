@@ -15,12 +15,16 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+    - name: list file
+      run: |
+        ls -lah ${HOME}
+        ls -lah ${GITHUB_WORKSPACE}
     - name: fs test
       run: |
         pwd
-        date > ./file
+        date > ${HOME}/date
     - name: fs test2
       run: cat ./file
     - name: net test
       run: |
-        curl -LO "https://github.com/gohugoio/hugo/releases/download/v0.57.2/hugo_extended_0.57.2_Linux-64bit.tar.gz"
+        curl -o ${HOME}/hugo.tar.gz -L "https://github.com/gohugoio/hugo/releases/download/v0.57.2/hugo_extended_0.57.2_Linux-64bit.tar.gz"
