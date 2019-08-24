@@ -21,10 +21,8 @@ jobs:
     - name: os
       run: |
         cat /proc/cpuinfo
-        cat /proc/meminfo
-        cat /proc/partitions
-        cat /proc/loadavg
-        cat /proc/stat
+        free -h
+        ip a s
     - name: fs test
       run: |
         pwd
