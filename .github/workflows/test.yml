@@ -7,6 +7,11 @@ jobs:
 
     runs-on: ubuntu-latest
     
+    services:
+      nginx:
+        image: nginx
+        ports:
+        - 8080:80
     steps:
     - uses: actions/checkout@v1
     - name: Run a one-line script
@@ -33,3 +38,5 @@ jobs:
       uses: docker://alpine:latest
       with:
         args: echo test
+    - name: curl
+      run: curl http://localhost/
