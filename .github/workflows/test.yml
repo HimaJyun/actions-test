@@ -17,9 +17,7 @@ jobs:
         echo test, and deploy your project.
     - name: list file
       run: |
-        ls -lah ${HOME}
-        ls -lah ${GITHUB_WORKSPACE}
-        ls -lah /github
+        find / -maxdepth 2
     - name: fs test
       run: |
         pwd
