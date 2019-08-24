@@ -12,7 +12,7 @@ jobs:
         image: nginx
         ports:
         - 8080:80
-      mysq;:
+      mysql:
         image: mysql
         ports:
         - 3306
