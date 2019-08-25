@@ -3,6 +3,7 @@ on: push
 
 jobs:
   build:
+    name: matrix test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -13,24 +14,6 @@ jobs:
           java: '12'
     steps:
     - uses: actions/checkout@v1
-    - name: Set up JDK ${{ matrix.java }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ matrix.java }}
-
-  includes:
-    name: matrix include
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        include:
-        - os: ubuntu-latest
-          java: '8'
-        - os: windows-latest
-          java: '11'
-        - os: macOS-latest
-          java: '12'
-    steps:
     - name: Set up JDK ${{ matrix.java }}
       uses: actions/setup-java@v1
       with:
