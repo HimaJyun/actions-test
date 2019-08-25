@@ -32,15 +32,20 @@ jobs:
     name: test os info
     runs-on: ubuntu-latest
     steps:
-    - name: os info
-      run: |
-        cat /proc/cpuinfo
-        ls -lah /
-        free -h
-        ip a s
-        curl -s https://domains.google.com/checkip
-        date
-        pwd
+    - name: cpuinfo
+      run: cat /proc/cpuinfo
+    - name: list files
+      run: ls -lah /
+    - name: free memory
+      run: free -h
+    - name: nic
+      run: ip a s
+    - name: ip
+      run: curl -s https://domains.google.com/checkip
+    - name: date
+      run: date
+    - name: pwd
+      run: pwd
 
   docker:
     name: docker test
