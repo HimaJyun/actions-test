@@ -53,7 +53,7 @@ jobs:
 
   expression:
     name: expression test
-    runs-os: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: if
       if: github.event_name == 'push'
