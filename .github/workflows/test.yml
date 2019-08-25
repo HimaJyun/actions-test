@@ -1,4 +1,4 @@
-name: CI
+name: Test
 
 on:
   push:
@@ -8,10 +8,9 @@ on:
   pull_request:
 
 jobs:
-  build:
-
+  services:
+    name: services test
     runs-on: ubuntu-latest
-    
     services:
       nginx:
         image: nginx
@@ -22,34 +21,42 @@ jobs:
         ports:
         - 3306
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-    - name: list file
-      run: |
-        ls -lah /
-    - name: os
-      run: |
-        cat /proc/cpuinfo
-        free -h
-        ip a s
-    - name: fs test
-      run: |
-        pwd
-        date > ${HOME}/date
-    - name: fs test2
-      run: cat ${HOME}/date
-    - name: docker test
-      uses: docker://alpine:latest
-      with:
-        args: echo test
     - name: mysql port
       run: echo ${PORT}
       env:
         PORT: ${{ job.services.mysql.ports['3306'] }}
     - name: curl
       run: curl http://localhost:8080/
+
+  os:
+    name: test os info
+    runs-on: ubuntu-latest
+    steps:
+    - name: os info
+      run: |
+        cat /proc/cpuinfo
+        ls -lah /
+        free -h
+        ip a s
+        curl -s https://domains.google.com/checkip
+        date
+        pwd
+
+  docker:
+    name: docker test
+    runs-on: ubuntu-latest
+    steps:
+    - name: docker test
+      uses: docker://alpine:latest
+      with:
+        args: echo test
+
+  expression:
+    name: expression test
+    runs-os: ubuntu-latest
+    steps:
+    - name: if
+      if: github.event_name == 'push'
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
