@@ -9,8 +9,8 @@ jobs:
         java: ['8','11','12']
         os: [ubuntu-latest, windows-latest, macOS-latest]
         include:
-        - os: ubuntu-latest
-          java: '13'
+        - os: ubuntu-16.04
+          java: '8'
         exclude:
         - os: windows-latest
           java: '12'
