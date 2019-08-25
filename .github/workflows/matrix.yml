@@ -18,7 +18,8 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
 
-includes:
+  includes:
+    name: matrix include
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
